@@ -30,12 +30,12 @@ class BurgerBuilder extends Component {
       ...this.state.ingredients
     };
     const sum = Object.keys(ingredients)
-    .map(igKey => {
-      return ingredients[igKey];
-    })
-    .reduce((sum, el) => {
-      return sum + el;
-    }, 0);
+      .map(igKey => {
+        return ingredients[igKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
     this.setState({ purchasable: sum > 0 })
   }
 
@@ -74,6 +74,10 @@ class BurgerBuilder extends Component {
     this.setState({ purchasing: false })
   }
 
+  purchaseContinueHandler = () => {
+    alert('You continue!');
+  }
+
   render() {
     const disableInfo = {
       ...this.state.ingredients
@@ -83,21 +87,25 @@ class BurgerBuilder extends Component {
     }
     // {salad: true, meat: false, ...}
     return (
-          <Aux>
-            <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-              <OrderSummary ingredients={this.state.ingredients} />
-            </Modal>
-            <Burger ingredients={this.state.ingredients}/>
-            <BuildControls
-              ingredientAdded={this.addIngredientHandler}
-              ingredientRemoved={this.removeIngredientHandler}
-              disabled={disableInfo}
-              purchasable={this.state.purchasable}
-              price={this.state.totalPrice}
-              ordered={this.purchaseHandler}
-            />
-          </Aux>
-      );
+      <Aux>
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+          <OrderSummary
+            purchaseCancelled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
+            ingredients={this.state.ingredients}
+          />
+        </Modal>
+        <Burger ingredients={this.state.ingredients} />
+        <BuildControls
+          ingredientAdded={this.addIngredientHandler}
+          ingredientRemoved={this.removeIngredientHandler}
+          disabled={disableInfo}
+          purchasable={this.state.purchasable}
+          price={this.state.totalPrice}
+          ordered={this.purchaseHandler}
+        />
+      </Aux>
+    );
   }
 };
 
