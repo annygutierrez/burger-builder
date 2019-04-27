@@ -2,7 +2,7 @@
 
 This is a web app that allows you to build your own burguer, and send a request.
 
-<div style="text-align:center"><img src="https://user-images.githubusercontent.com/32302890/56851979-c5ab2e00-68da-11e9-8f95-d2e48dedec3f.png" alt="burger1" /></div>
+<p align="center"><img src="https://user-images.githubusercontent.com/32302890/56851979-c5ab2e00-68da-11e9-8f95-d2e48dedec3f.png" alt="burger1" /></p>
 
 
 ### `npm start`
